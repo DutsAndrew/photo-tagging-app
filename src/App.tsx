@@ -1,5 +1,9 @@
 import React from 'react';
 import './styles/App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Leaderboard from './components/Leaderboard';
+import Footer from './components/Footer';
 
 // Initialize Firebase
 import { initializeApp } from "firebase/app";
@@ -15,9 +19,12 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <div className="App">
-     <p>Hello</p>
-    </div>
+      <div className='app'>
+        <Header />
+        <Home />
+        <Leaderboard />
+        <Footer /> 
+      </div>
   );
 }
 
