@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import '../styles/LevelsDisplay.css';
 import type  { LevelDisplayProps } from "../types/interfaces";
 import Level1Snap from './level_snapshots/Level1Snap';
 import Level2Snap from './level_snapshots/Level2Snap';
@@ -19,6 +20,7 @@ const LevelDisplay: FC<LevelDisplayProps> = (props): JSX.Element => {
       <Level4Snap handleLevelSelection={handleLevelSelection} />
       <Level5Snap handleLevelSelection={handleLevelSelection} />
       <Level6Snap handleLevelSelection={handleLevelSelection} />
+      <button className="view-leaderboard-button">View Leaderboard</button>
     </div>
   );
 };
