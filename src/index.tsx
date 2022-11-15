@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/index.css';
 import App from './App';
 import { 
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
-import Home from './components/Home';
+import Home from './components/MainPage';
 import Leaderboard from './components/Leaderboard';
 import Level1 from './components/levels/Level1';
 import Level2 from './components/levels/Level2';

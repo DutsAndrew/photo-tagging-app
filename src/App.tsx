@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/App.css';
 import Header from './components/Header';
-import Home from './components/Home';
+import MainPage from './components/MainPage';
 import Leaderboard from './components/Leaderboard';
 import Footer from './components/Footer';
 
@@ -21,7 +21,7 @@ function App() {
   return (
       <div className='app'>
         <Header />
-        <Home />
+        <MainPage />
         <Leaderboard />
         <Footer /> 
       </div>
