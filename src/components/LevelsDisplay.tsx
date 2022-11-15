@@ -12,6 +12,10 @@ const LevelDisplay: FC<LevelDisplayProps> = (props): JSX.Element => {
 
   const { handleLevelSelection } = props;
 
+  const handleLeaderboardRender = () => {
+    handleLevelSelection(7);
+  };
+
   return (
     <div className="level-snap-container">
       <Level1Snap handleLevelSelection={handleLevelSelection} />
@@ -20,7 +24,7 @@ const LevelDisplay: FC<LevelDisplayProps> = (props): JSX.Element => {
       <Level4Snap handleLevelSelection={handleLevelSelection} />
       <Level5Snap handleLevelSelection={handleLevelSelection} />
       <Level6Snap handleLevelSelection={handleLevelSelection} />
-      <button className="view-leaderboard-button">View Leaderboard</button>
+      <button className="view-leaderboard-button" onClick={handleLeaderboardRender} >View Leaderboard</button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LevelDisplay from "./LevelsDisplay";
 import Leaderboard from './Leaderboard';
 import Level1 from './levels/Level1';
@@ -14,8 +14,16 @@ const MainPage = (): JSX.Element => {
     level: 0,
   });
 
-  const handleLevelSelection = () => {
-    console.log('level is being selected');
+  const handleLevelSelection = (levelNumber: number): void => {
+    setCurrentLevel({
+      level: levelNumber,
+    });
+  };
+
+  const returnToMain = () => {
+    setCurrentLevel({
+      level: 0,
+    });
   };
 
   if (currentLevel.level === 0) {
@@ -26,37 +34,43 @@ const MainPage = (): JSX.Element => {
 
   if (currentLevel.level === 1) {
     return (
-      <Level1 />
+      <Level1 returnToMain={returnToMain} />
     )
   };
 
   if (currentLevel.level === 2) {
     return (
-      <Level2 />
+      <Level2 returnToMain={returnToMain} />
     )
   };
 
   if (currentLevel.level === 3) {
     return (
-      <Level3 />
+      <Level3 returnToMain={returnToMain} />
     )
   };
 
   if (currentLevel.level === 4) {
     return (
-      <Level4 />
+      <Level4 returnToMain={returnToMain} />
     )
   };
 
   if (currentLevel.level === 5) {
     return (
-      <Level5 />
+      <Level5 returnToMain={returnToMain} />
     )
   };
 
   if (currentLevel.level === 6) {
     return (
-      <Level6 />
+      <Level6 returnToMain={returnToMain} />
+    )
+  };
+
+  if (currentLevel.level === 7) {
+    return (
+      <Leaderboard returnToMain={returnToMain} />
     )
   };
 

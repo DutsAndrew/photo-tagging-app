@@ -1,8 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
+import type { LevelProps } from "../../types/interfaces";
 
-const Level5 = () => {
+const Level5: FC<LevelProps> = (props): JSX.Element => {
+
+  const { returnToMain } = props;
+
   return (
-    <p>Level 5</p>
+    <div className="level-container">
+       <p>Level 5</p>
+      <button className="return-to-main-button" onClick={returnToMain} >Return to Main Page</button>
+    </div>
   );
 };
 

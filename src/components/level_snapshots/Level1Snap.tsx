@@ -6,8 +6,12 @@ const Level1Snap: FC<LevelSnapProps> = (props): JSX.Element => {
 
   const { handleLevelSelection } = props;
 
+  const sendLevelInformation = (): void => {
+    handleLevelSelection(1);
+  };
+
   return (
-    <div className="level-container">
+    <div className="level-container" onClick={sendLevelInformation} >
       <img src={beachLevel} alt="beach level preview" height="85%" width="100%" ></img>
       <div className="level-info-container">
         <p className="level-info-current-level"><strong>Level 1: Beach</strong></p>

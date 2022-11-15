@@ -2,7 +2,6 @@ import React from 'react';
 import './styles/App.css';
 import Header from './components/Header';
 import MainPage from './components/MainPage';
-import Leaderboard from './components/Leaderboard';
 import Footer from './components/Footer';
 
 // Initialize Firebase
@@ -22,7 +21,6 @@ function App() {
       <div className='app'>
         <Header />
         <MainPage />
-        <Leaderboard />
         <Footer /> 
       </div>
   );
