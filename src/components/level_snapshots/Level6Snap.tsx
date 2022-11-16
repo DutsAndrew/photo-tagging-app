@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import type { LevelSnapProps } from "../../types/interfaces";
+import type { snapProps } from "../../types/interfaces";
 import siegeLevel from '../../assets/waldo_levels/waldo_siege_map.jpeg';
 
-const Level6Snap: FC<LevelSnapProps> = (props): JSX.Element => {
+const Level6Snap: FC<snapProps> = (props): JSX.Element => {
 
   const { handleLevelSelection } = props;
 
@@ -11,11 +11,11 @@ const Level6Snap: FC<LevelSnapProps> = (props): JSX.Element => {
   };
   
   return (
-    <div className="level-container" onClick={sendLevelInformation}>
+    <div className="level-snap-container" onClick={sendLevelInformation}>
       <img src={siegeLevel} alt="beach level preview" height="85%" width="100%" ></img>
-      <div className="level-info-container">
-        <p className="level-info-current-level"><strong>Level 6: Siege</strong></p>
-        <p className="level-info-best-score"><em>No Best Score</em></p>
+      <div className="level-snap-info-container">
+        <p className="level-snap-info-current-level"><strong>Level 6: Siege</strong></p>
+        <p className="level-snap-info-best-score"><em>No Best Score</em></p>
       </div>
     </div>
   );

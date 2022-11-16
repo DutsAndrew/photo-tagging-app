@@ -1,10 +1,10 @@
 import { MouseEventHandler } from 'react';
 
-interface LevelDisplayProps {
+interface LevelsSnapshotProps {
   handleLevelSelection: Function,
 }
 
-interface LevelSnapProps {
+interface snapProps {
   handleLevelSelection: Function,
 };
 
@@ -17,8 +17,8 @@ interface LeaderboardProps {
 };
 
 export type {
-  LevelSnapProps,
-  LevelDisplayProps,
+  snapProps,
+  LevelsSnapshotProps,
   LevelProps,
   LeaderboardProps,
 }

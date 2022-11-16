@@ -1,0 +1,47 @@
+.level-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  margin-top: 2%;
+  width: 100vw;
+  height: 90vh;
+}
+
+.level-info-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(235, 38, 3, 0.9);
+  width: 75vw;
+  height: 5vh;
+  margin-bottom: 2%;
+}
+
+.current-level-text, .level-objective-text {
+  color: white;
+  font-size: 1.5em;
+}
+
+.level-objectives-container {
+  width: 20vw;
+}
+
+.map-container {
+  width: 100vw;
+  height: 70vh;
+}
+
+.return-to-main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 4vh;
+  margin-top: 1%;
+  background-color: rgb(235, 38, 32);
+  color: white;
+  font-size: 1em;
+}

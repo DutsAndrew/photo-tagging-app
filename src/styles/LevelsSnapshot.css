@@ -1,4 +1,4 @@
-.level-snap-container {
+.game-levels-preview-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -8,7 +8,7 @@
   overflow: scroll;
 }
 
-.level-container {
+.level-snap-container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -20,7 +20,7 @@
   transition: all .2s ease-in-out;
 }
 
-.level-info-container {
+.level-snap-info-container {
   width: 30vw;
   height: 5vh;
   display: flex;
@@ -31,7 +31,7 @@
   font-size: 1.25em;
 }
 
-.level-container:hover {
+.level-snap-container:hover {
   background-color: rgb(235, 38, 32, 0.75);
   transform: scale(1.1);
   cursor: pointer;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import LevelDisplay from "./LevelsDisplay";
+import '../styles/Level.css';
+import LevelsSnapshot from "./LevelsSnapshot";
 import Leaderboard from './Leaderboard';
 import Level1 from './levels/Level1';
 import Level2 from './levels/Level2';
@@ -28,7 +29,7 @@ const MainPage = (): JSX.Element => {
 
   if (currentLevel.level === 0) {
     return (
-      <LevelDisplay handleLevelSelection={handleLevelSelection} />
+      <LevelsSnapshot handleLevelSelection={handleLevelSelection} />
     );
   };
 
