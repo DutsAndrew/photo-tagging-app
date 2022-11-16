@@ -14,7 +14,7 @@ const Level5Snap: FC<snapProps> = (props): JSX.Element => {
     <div className="level-snap-container" onClick={sendLevelInformation}>
       <img src={medievalLevel} alt="beach level preview" height="85%" width="100%" ></img>
       <div className="level-snap-info-container">
-        <p className="level-snap-info-current-level"><strong>Level 5: Medieval</strong></p>
+        <p className="level-snap-info-current-level"><strong>Level 5: GoldShire</strong></p>
         <p className="level-snap-info-best-score"><em>No Best Score</em></p>
       </div>
     </div>
