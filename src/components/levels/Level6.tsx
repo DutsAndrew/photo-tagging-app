@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import type { LevelProps } from "../../types/interfaces";
 import siegeLevel from '../../assets/waldo_levels/waldo_siege_map.jpeg';
+import waldo from '../../assets/waldo_characters/waldo.jpg';
 
 const Level6: FC<LevelProps> = (props): JSX.Element => {
 
@@ -12,6 +13,7 @@ const Level6: FC<LevelProps> = (props): JSX.Element => {
       <p className="current-level-text">Level 6: Siege</p>
       <div className="level-objectives-container">
         <p className="level-objective-text">Find:</p>
+        <img src={waldo} alt="waldo" width="30vw" height="30vh"></img>
       </div>
     </div>
     <div className="map-container">
