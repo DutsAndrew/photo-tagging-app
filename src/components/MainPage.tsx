@@ -27,57 +27,31 @@ const MainPage = (): JSX.Element => {
     });
   };
 
-  if (currentLevel.level === 0) {
-    return (
-      <LevelsSnapshot handleLevelSelection={handleLevelSelection} />
-    );
+  function pageRenderer(level: number): JSX.Element {
+    switch(level) {
+      case 0:
+        return <LevelsSnapshot handleLevelSelection={handleLevelSelection} />
+      case 1:
+        return <Level1 returnToMain={returnToMain} />;
+      case 2:
+        return <Level2 returnToMain={returnToMain} />
+      case 3:
+        return <Level3 returnToMain={returnToMain} />
+      case 4:
+        return <Level4 returnToMain={returnToMain} />
+      case 5:
+        return <Level5 returnToMain={returnToMain} />
+      case 6:
+        return <Level6 returnToMain={returnToMain} />
+      case 7:
+        return <Leaderboard returnToMain={returnToMain} />
+      default:
+        return <p>Error, please try again</p>
+    };
   };
 
-  if (currentLevel.level === 1) {
-    return (
-      <Level1 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 2) {
-    return (
-      <Level2 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 3) {
-    return (
-      <Level3 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 4) {
-    return (
-      <Level4 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 5) {
-    return (
-      <Level5 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 6) {
-    return (
-      <Level6 returnToMain={returnToMain} />
-    )
-  };
-
-  if (currentLevel.level === 7) {
-    return (
-      <Leaderboard returnToMain={returnToMain} />
-    )
-  };
-
-  return (
-    <p>Error, please try again</p>
-  )
+  const currentPage: JSX.Element = pageRenderer(currentLevel.level);
+  return currentPage;
 };
 
 export default MainPage;
