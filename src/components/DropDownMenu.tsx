@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import "../styles/DropDownMenu.css";
 import type { DropDownMenuProps } from "../types/interfaces";
 import uniqid from 'uniqid';
 import styled from 'styled-components'
@@ -38,16 +37,16 @@ const CharacterSelection = styled.li`
 
 const DropDownMenu: FC<DropDownMenuProps> = (props): JSX.Element => {
 
-  const { characterList, handleDropDownMenuSelection, characterSelectionMenu } = props;
+  const { characterList, dropDownMenu } = props;
 
-  const xLocation = characterSelectionMenu.x;
-  const yLocation = characterSelectionMenu.y;
+  const xLocation = dropDownMenu.x;
+  const yLocation = dropDownMenu.y;
 
   return (
     <DropDownForm style={{left: `${xLocation}px`, top: `${yLocation}px`}} >
         <CharacterList>
           {Array.isArray(characterList) && characterList.map((character) => {
-            return <CharacterSelection key={uniqid()}>{character}</CharacterSelection>
+            return <CharacterSelection id={character} key={uniqid()}>{character}</CharacterSelection>
           })}
         </CharacterList>
     </DropDownForm>

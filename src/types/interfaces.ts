@@ -4,12 +4,9 @@ interface LevelsSnapshotProps {
   handleLevelSelection: Function,
 }
 
-interface snapProps {
-  handleLevelSelection: Function,
-};
-
 interface LevelProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
+  levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; }
 };
 
 interface LeaderboardProps {
@@ -17,13 +14,11 @@ interface LeaderboardProps {
 };
 
 interface DropDownMenuProps {
-  characterList: Array<string>,
-  handleDropDownMenuSelection: MouseEventHandler<HTMLButtonElement>,
-  characterSelectionMenu: any,
+  characterList: string[],
+  dropDownMenu: any,
 }
 
 export type {
-  snapProps,
   LevelsSnapshotProps,
   LevelProps,
   LeaderboardProps,
