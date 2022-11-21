@@ -35,7 +35,7 @@ const LevelsSnapshot: FC<LevelsSnapshotProps> = (props): JSX.Element => {
       level: 2,
     },
     {
-      name: 'Level 3: Fest',
+      name: 'Level 3: Feast',
       bestScore: 'No Best Score',
       mapSrc: feastLevel,
       level: 3,

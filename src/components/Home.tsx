@@ -47,6 +47,10 @@ const MainPage = (): JSX.Element => {
           name: 'Odlaw',
           img: odlaw,
         },
+        {
+          name: 'Wenda',
+          img: wenda,
+        },
       ],
       mapSrc: beachLevel,
       level: 1,
@@ -115,6 +119,10 @@ const MainPage = (): JSX.Element => {
           name: 'Wenda',
           img: wenda,
         },
+        {
+          name: 'Wizard',
+          img: wizard,
+        },
       ],
       mapSrc: marketLevel,
       level: 4,
@@ -130,6 +138,10 @@ const MainPage = (): JSX.Element => {
         {
           name: 'Wenda',
           img: wenda,
+        },
+        {
+          name: 'Odlaw',
+          img: odlaw,
         },
       ],
       mapSrc: medievalLevel,

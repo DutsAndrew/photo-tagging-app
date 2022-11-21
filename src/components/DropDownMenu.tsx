@@ -39,8 +39,8 @@ const DropDownMenu: FC<DropDownMenuProps> = (props): JSX.Element => {
 
   const { characterList, dropDownMenu } = props;
 
-  const xLocation = dropDownMenu.x;
-  const yLocation = dropDownMenu.y;
+  const xLocation = dropDownMenu.mouseX;
+  const yLocation = dropDownMenu.mouseY;
 
   return (
     <DropDownForm style={{left: `${xLocation}px`, top: `${yLocation}px`}} >
