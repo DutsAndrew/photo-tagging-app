@@ -7,8 +7,10 @@ import { initializeApp } from "firebase/app";
 import { getFirestore,
   doc,
   collection,
+  getDoc,
   getDocs,
   query,
+  Firestore,
 } from 'firebase/firestore';
 
 const Level1: FC<LevelProps> = (props): JSX.Element => {
@@ -81,14 +83,12 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
   };
 
   const handleCharacterMenuSelection = (target: HTMLInputElement): void => {
-
     setCharacterSelected({
       status: true,
       character: target.id,
       characterX: dropDownMenu.characterX,
       characterY: dropDownMenu.characterY,
     });
-
     setDropDownMenu({
       status: false,
       mouseX: 0,
@@ -98,20 +98,68 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
     });
   };
 
+  // check db when a character has been selected to validate for good click
   useEffect(() => {
-    // check database on character selection for good click
-    // Initialize Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyD34yDJ04Py9lOKIJOm8G8m83nhzSiaqiA",
-      authDomain: "photo-tagging-app-f39ec.firebaseapp.com",
-      projectId: "photo-tagging-app-f39ec",
-      storageBucket: "photo-tagging-app-f39ec.appspot.com",
-      messagingSenderId: "722301117573",
-      appId: "1:722301117573:web:44652e9fdd2675a00cb5ec"
+    // if there is a selected character check db, prevents db query when state is first set
+    if (characterSelected.character.length > 1) {
+      (async function fetchCharacterDataFromFirestore() {
+        // Initialize Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyD34yDJ04Py9lOKIJOm8G8m83nhzSiaqiA",
+          authDomain: "photo-tagging-app-f39ec.firebaseapp.com",
+          projectId: "photo-tagging-app-f39ec",
+          storageBucket: "photo-tagging-app-f39ec.appspot.com",
+          messagingSenderId: "722301117573",
+          appId: "1:722301117573:web:44652e9fdd2675a00cb5ec"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    
+        async function getCharacterCoordsFromFirebase(db: Firestore) {
+          const charactersRef = doc(db, 'levels', levelData.level.toString());
+          const charactersSnap = await getDoc(charactersRef);
+    
+          const waldoData: Object | undefined = charactersSnap.data()?.Waldo;
+          const wendaData: Object | undefined = charactersSnap.data()?.Wenda;
+          const wizardData: Object | undefined = charactersSnap.data()?.Wizard;
+          const odlawData: Object | undefined = charactersSnap.data()?.Odlaw;
+    
+          const selectedCharacter = characterSelected.character;
+    
+          switch(selectedCharacter) {
+            case 'Waldo':
+              return waldoData;
+            case 'Wenda':
+              return wendaData;
+            case 'Wizard':
+              return wizardData;
+            case 'Odlaw':
+              return odlawData;
+            default:
+              return null;
+          }
+        };
+        const characterDbData = await getCharacterCoordsFromFirebase(db);
+        checkIfDbCoordsMatchClient(characterDbData)
+      })();
+    }
+  }, [characterSelected]);
+
+  const checkIfDbCoordsMatchClient = (characterDbData: any) => {
+    const mouseX = characterSelected.characterX;
+    const mouseY = characterSelected.characterY;
+    if (characterDbData) {
+      if (mouseX > characterDbData[2]
+        && mouseX < characterDbData[3]
+        && mouseY > characterDbData[0]
+        && mouseY < characterDbData[1]
+      ) {
+        console.log('character found');
+      } else {
+        console.log('character not found');
+      }
     };
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  }, [characterSelected])
+  };
 
   if (dropDownMenu.status === true) {
     return (
