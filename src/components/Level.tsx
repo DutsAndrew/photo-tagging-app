@@ -1,6 +1,6 @@
 import React, { FC, useState, MouseEvent, useEffect } from "react";
 import '../styles/Level.css';
-import type { LevelProps } from "../types/interfaces";
+import type { LevelProps, foundCharactersState } from "../types/interfaces";
 import DropDownMenu from './DropDownMenu';
 import uniqid from 'uniqid';
 import { initializeApp } from "firebase/app";
@@ -13,19 +13,9 @@ import { getFirestore,
   Firestore,
 } from 'firebase/firestore';
 
-const Level1: FC<LevelProps> = (props): JSX.Element => {
+const Level: FC<LevelProps> = (props): JSX.Element => {
 
   const { returnToMain, levelData } = props;
-
-  const fetchCharacters = (): string[] => {
-    const characterList: string[] = [];
-    levelData.characters.forEach((character) => {
-      characterList.push(character.name);
-    });
-    return characterList;
-  };
-
-  const characterList = fetchCharacters();
 
   const [dropDownMenu, setDropDownMenu] = useState({
     status: false,
@@ -41,6 +31,21 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
     characterX: 0,
     characterY: 0,
   });
+
+  const [foundCharacters, setFoundCharacters] = useState<foundCharactersState>({
+    list: [],
+  });
+
+  const fetchCharacters = (): string[] => {
+    // converts level data into a readable character list
+    const characterList: string[] = [];
+    levelData.characters.forEach((character) => {
+      characterList.push(character.name);
+    });
+    return characterList;
+  };
+
+  const characterList: string[] = fetchCharacters();
 
   const handleMapClick = (e: MouseEvent): void => {
     const target = e.target as HTMLInputElement;
@@ -62,6 +67,7 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
       const mouseY = e.clientY;
       const characterX = (e.clientX-mapImg.offsetLeft) / mapImg.offsetWidth * 100;
       const characterY = (e.clientY-mapImg.offsetTop) / mapImg.offsetHeight * 100;
+      // console.log('X:', characterX, 'Y:', characterY);
       if (dropDownMenu.status === false) {
         setDropDownMenu({
           status: true,
@@ -148,17 +154,57 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
   const checkIfDbCoordsMatchClient = (characterDbData: any) => {
     const mouseX = characterSelected.characterX;
     const mouseY = characterSelected.characterY;
+    // console.log(mouseX, mouseY, characterDbData);
     if (characterDbData) {
       if (mouseX > characterDbData[2]
         && mouseX < characterDbData[3]
         && mouseY > characterDbData[0]
         && mouseY < characterDbData[1]
       ) {
-        console.log('character found');
+        handleCharacterFound();
       } else {
-        console.log('character not found');
-      }
+        handleBadClick();
+      };
     };
+  };
+
+  const handleCharacterFound = () => {
+    const character: string = characterSelected.character;
+    const charactersFound: string[] = foundCharacters.list;
+    setCharacterSelected({
+      status: false,
+      character: '',
+      characterX: 0,
+      characterY: 0,
+    });
+    setFoundCharacters({
+      list: [...charactersFound, character],
+    });
+    buildUserResponse(`SUCCESS! You Found: ${character}`, true);
+  };
+
+  const handleBadClick = () => {
+    const character = characterSelected.character;
+    setCharacterSelected({
+      status: false,
+      character: '',
+      characterX: 0,
+      characterY: 0,
+    });
+    buildUserResponse(`That wasn\'t: ${character}. Try again :)`, false);
+  };
+
+  const buildUserResponse = (response: string, status: boolean): void => {
+    const mapContainer = document.querySelector('.level-info-container');
+    const responseText = document.createElement('p');
+    responseText.textContent = response;
+    responseText.classList.add('character-selection-response');
+    if (status === true) {
+      responseText.classList.add('response-success');
+    } else if (status === false) {
+      responseText.classList.add('response-fail');
+    };
+    mapContainer?.appendChild(responseText);
   };
 
   if (dropDownMenu.status === true) {
@@ -169,7 +215,7 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
           <div className="level-objectives-container">
             <p className="level-objective-text">Find:</p>
             {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
-              return <img key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+              return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
             })}
           </div>
         </div>
@@ -192,19 +238,16 @@ const Level1: FC<LevelProps> = (props): JSX.Element => {
         <div className="level-objectives-container">
           <p className="level-objective-text">Find:</p>
           {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
-              return <img key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+              return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
           })}
         </div>
       </div>
       <div className="map-container" onClick={handleMapClick} >
-        <img id="current-level" src={levelData.mapSrc} alt="beach" width="100%" height="100%" useMap="#current-map"  ></img>
-        <map name="current-map">
-          
-        </map>
+        <img id="current-level" src={levelData.mapSrc} alt="beach" width="100%" height="100%"></img>
       </div>
       <button className="return-to-main-button" onClick={returnToMain} >Return to Main Page</button>
     </div>
   );
 };
 
-export default Level1;
+export default Level;

@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 
 interface LevelsSnapshotProps {
   handleLevelSelection: Function,
-}
+};
 
 interface LevelProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
@@ -16,11 +16,16 @@ interface LeaderboardProps {
 interface DropDownMenuProps {
   characterList: string[],
   dropDownMenu: any,
-}
+};
+
+interface foundCharactersState {
+  list: string[];
+};
 
 export type {
   LevelsSnapshotProps,
   LevelProps,
   LeaderboardProps,
   DropDownMenuProps,
+  foundCharactersState,
 };
