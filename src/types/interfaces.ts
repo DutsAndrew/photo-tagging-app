@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, FormEventHandler } from 'react';
 
 interface LevelsSnapshotProps {
   handleLevelSelection: Function,
@@ -23,10 +23,21 @@ interface foundCharactersState {
   list: string[];
 };
 
+interface AddNameProps {
+  levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; },
+  returnToMain: MouseEventHandler<HTMLButtonElement>,
+};
+
+interface NameFormProps {
+  saveNameToDb: FormEventHandler<HTMLFormElement>,
+};
+
 export type {
   LevelsSnapshotProps,
   LevelProps,
   LeaderboardProps,
   DropDownMenuProps,
   foundCharactersState,
+  AddNameProps,
+  NameFormProps,
 };

@@ -1,12 +1,12 @@
 import React, { FC, MouseEventHandler } from "react";
-import '../styles/LevelsSnapshot.css';
-import type  { LevelsSnapshotProps } from "../types/interfaces";
-import beachLevel from '../assets/waldo_levels/waldo_beach_map.jpeg';
-import coldMountainLevel from '../assets/waldo_levels/waldo_cold_mountain.jpeg';
-import feastLevel from '../assets/waldo_levels/waldo_feast_map.jpeg';
-import marketLevel from '../assets/waldo_levels/waldo_market.jpeg';
-import medievalLevel from '../assets/waldo_levels/waldo_medieval_map.jpeg';
-import siegeLevel from '../assets/waldo_levels/waldo_siege_map.jpeg';
+import '../../styles/LevelsSnapshot.css';
+import type  { LevelsSnapshotProps } from "../../types/interfaces";
+import beachLevel from '../../assets/waldo_levels/waldo_beach_map.jpeg';
+import coldMountainLevel from '../../assets/waldo_levels/waldo_cold_mountain.jpeg';
+import feastLevel from '../../assets/waldo_levels/waldo_feast_map.jpeg';
+import marketLevel from '../../assets/waldo_levels/waldo_market.jpeg';
+import medievalLevel from '../../assets/waldo_levels/waldo_medieval_map.jpeg';
+import siegeLevel from '../../assets/waldo_levels/waldo_siege_map.jpeg';
 import uniqid from 'uniqid';
 
 const LevelsSnapshot: FC<LevelsSnapshotProps> = (props): JSX.Element => {

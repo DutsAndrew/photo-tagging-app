@@ -1,6 +1,6 @@
 import React, { FC, useState, MouseEvent, useEffect } from "react";
-import '../styles/Level.css';
-import type { LevelProps } from "../types/interfaces";
+import '../../styles/Level.css';
+import type { LevelProps } from "../../types/interfaces";
 import DropDownMenu from './DropDownMenu';
 import uniqid from 'uniqid';
 import { initializeApp } from "firebase/app";
@@ -12,7 +12,8 @@ import { getFirestore,
   query,
   Firestore,
 } from 'firebase/firestore';
-import { foundCharactersState } from '../types/interfaces';
+import { foundCharactersState } from '../../types/interfaces';
+import AddNameToLeaderboard from '../Leaderboard/AddNameToLeaderboard';
 
 const Level: FC<LevelProps> = (props): JSX.Element => {
 
@@ -36,6 +37,22 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
   const [charactersFound, setCharactersFound] = useState<foundCharactersState>({
     list: [],
   });
+
+  const [level, setLevel] = useState({
+    finished: false,
+    time: 0,
+  });
+
+  const fetchCharacters = (): string[] => {
+    // converts level data into a readable character list
+    const characterList: string[] = [];
+    levelData.characters.forEach((character) => {
+      characterList.push(character.name);
+    });
+    return characterList;
+  };
+
+  const characterList: string[] = fetchCharacters();
 
   const handleMapClick = (e: MouseEvent): void => {
     const target = e.target as HTMLInputElement;
@@ -173,6 +190,12 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
       characterX: 0,
       characterY: 0,
     });
+    if (characterList.length === charactersFound.list.length + 1) {
+      setLevel({
+        finished: true,
+        time: 0,
+      });
+    };
   };
 
   const handleBadClick = () => {
@@ -202,16 +225,11 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     }, 2000);
   };
 
-  const fetchCharacters = (): string[] => {
-    // converts level data into a readable character list
-    const characterList: string[] = [];
-    levelData.characters.forEach((character) => {
-      characterList.push(character.name);
-    });
-    return characterList;
+  if (level.finished === true) {
+    return (
+      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} />
+    );
   };
-
-  const characterList: string[] = fetchCharacters();
 
   if (dropDownMenu.status === true) {
     return (
@@ -221,7 +239,9 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
           <div className="level-objectives-container">
             <p className="level-objective-text">Find:</p>
             {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
-              return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+              if (!charactersFound.list.includes(character.name)) {
+                return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+              }
             })}
           </div>
         </div>
@@ -245,7 +265,9 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
         <div className="level-objectives-container">
           <p className="level-objective-text">Find:</p>
           {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
+            if (!charactersFound.list.includes(character.name)) {
               return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+            }
           })}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import type { DropDownMenuProps } from "../types/interfaces";
+import type { DropDownMenuProps } from "../../types/interfaces";
 import uniqid from 'uniqid';
 import styled from 'styled-components'
 

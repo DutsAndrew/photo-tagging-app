@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import type { LeaderboardProps } from "../types/interfaces";
+import type { LeaderboardProps } from "../../types/interfaces";
 
 const Leaderboard: FC<LeaderboardProps> = (props): JSX.Element => {
 

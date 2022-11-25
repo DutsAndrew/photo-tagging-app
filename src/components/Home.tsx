@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import LevelsSnapshot from "./LevelsSnapshot";
-import Leaderboard from './Leaderboard';
-import Level from './Level';
+import LevelsSnapshot from "./levels/LevelsSnapshot";
+import Leaderboard from './Leaderboard/Leaderboard';
+import Level from './levels/Level';
 import { levelData } from '../data/levelData';
 
 const MainPage = (): JSX.Element => {
