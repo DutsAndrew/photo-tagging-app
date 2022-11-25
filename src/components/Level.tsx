@@ -1,6 +1,6 @@
 import React, { FC, useState, MouseEvent, useEffect } from "react";
 import '../styles/Level.css';
-import type { LevelProps, foundCharactersState } from "../types/interfaces";
+import type { LevelProps } from "../types/interfaces";
 import DropDownMenu from './DropDownMenu';
 import uniqid from 'uniqid';
 import { initializeApp } from "firebase/app";
@@ -12,6 +12,7 @@ import { getFirestore,
   query,
   Firestore,
 } from 'firebase/firestore';
+import { foundCharactersState } from '../types/interfaces';
 
 const Level: FC<LevelProps> = (props): JSX.Element => {
 
@@ -32,20 +33,9 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     characterY: 0,
   });
 
-  const [foundCharacters, setFoundCharacters] = useState<foundCharactersState>({
+  const [charactersFound, setCharactersFound] = useState<foundCharactersState>({
     list: [],
   });
-
-  const fetchCharacters = (): string[] => {
-    // converts level data into a readable character list
-    const characterList: string[] = [];
-    levelData.characters.forEach((character) => {
-      characterList.push(character.name);
-    });
-    return characterList;
-  };
-
-  const characterList: string[] = fetchCharacters();
 
   const handleMapClick = (e: MouseEvent): void => {
     const target = e.target as HTMLInputElement;
@@ -170,32 +160,34 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
 
   const handleCharacterFound = () => {
     const character: string = characterSelected.character;
-    const charactersFound: string[] = foundCharacters.list;
+    if (charactersFound.list.includes(character)) {
+      return;
+    };
+    setCharactersFound({
+      list: [...charactersFound.list, character],
+    });
+    buildUserResponse(`SUCCESS! You Found: ${character}`, true);
     setCharacterSelected({
       status: false,
       character: '',
       characterX: 0,
       characterY: 0,
     });
-    setFoundCharacters({
-      list: [...charactersFound, character],
-    });
-    buildUserResponse(`SUCCESS! You Found: ${character}`, true);
   };
 
   const handleBadClick = () => {
     const character = characterSelected.character;
+    buildUserResponse(`That wasn't: ${character}. Try again :)`, false);
     setCharacterSelected({
       status: false,
       character: '',
       characterX: 0,
       characterY: 0,
     });
-    buildUserResponse(`That wasn\'t: ${character}. Try again :)`, false);
   };
 
   const buildUserResponse = (response: string, status: boolean): void => {
-    const mapContainer = document.querySelector('.level-info-container');
+    const informationContainer = document.querySelector('.level-info-container');
     const responseText = document.createElement('p');
     responseText.textContent = response;
     responseText.classList.add('character-selection-response');
@@ -204,8 +196,22 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     } else if (status === false) {
       responseText.classList.add('response-fail');
     };
-    mapContainer?.appendChild(responseText);
+    informationContainer?.appendChild(responseText);
+    setTimeout(() => {
+      informationContainer?.removeChild(responseText);
+    }, 2000);
   };
+
+  const fetchCharacters = (): string[] => {
+    // converts level data into a readable character list
+    const characterList: string[] = [];
+    levelData.characters.forEach((character) => {
+      characterList.push(character.name);
+    });
+    return characterList;
+  };
+
+  const characterList: string[] = fetchCharacters();
 
   if (dropDownMenu.status === true) {
     return (
@@ -221,9 +227,10 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
         </div>
         <div className="map-container" onClick={handleMapClick} >
           <img id="current-level" src={levelData.mapSrc} alt="beach" width="100%" height="100%"></img>
-          <DropDownMenu 
-              characterList={characterList}
-              dropDownMenu={dropDownMenu}
+          <DropDownMenu
+            characterList={characterList}
+            dropDownMenu={dropDownMenu}
+            charactersFound={charactersFound.list}
           />
         </div>
       <button className="return-to-main-button" onClick={returnToMain} >Return to Main Page</button>

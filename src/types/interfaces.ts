@@ -16,6 +16,7 @@ interface LeaderboardProps {
 interface DropDownMenuProps {
   characterList: string[],
   dropDownMenu: any,
+  charactersFound: string[],
 };
 
 interface foundCharactersState {

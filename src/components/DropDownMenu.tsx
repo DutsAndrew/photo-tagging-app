@@ -37,7 +37,7 @@ const CharacterSelection = styled.li`
 
 const DropDownMenu: FC<DropDownMenuProps> = (props): JSX.Element => {
 
-  const { characterList, dropDownMenu } = props;
+  const { characterList, dropDownMenu, charactersFound } = props;
 
   const xLocation = dropDownMenu.mouseX;
   const yLocation = dropDownMenu.mouseY;
@@ -46,7 +46,9 @@ const DropDownMenu: FC<DropDownMenuProps> = (props): JSX.Element => {
     <DropDownForm style={{left: `${xLocation}px`, top: `${yLocation}px`}} >
         <CharacterList>
           {Array.isArray(characterList) && characterList.map((character) => {
-            return <CharacterSelection id={character} key={uniqid()}>{character}</CharacterSelection>
+            if (!charactersFound.includes(character)) {
+              return <CharacterSelection id={character} key={uniqid()}>{character}</CharacterSelection>
+            }
           })}
         </CharacterList>
     </DropDownForm>
