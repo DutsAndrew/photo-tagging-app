@@ -5,7 +5,7 @@ import NameForm from './NameForm';
 
 const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
 
-  const { levelData, returnToMain } = props;
+  const { levelData, returnToMain, gameOver } = props;
 
   const saveNameToDb = (e: any): void => {
     e.preventDefault();
@@ -14,6 +14,7 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
   return (
     <div className="add-name-to-leaderboard-container">
       <p className="level-win-text" >You beat {levelData.name}!</p>
+      <p className="level-win-text">Your time was: {gameOver}</p>
       <NameForm saveNameToDb={saveNameToDb} />
       <button className="return-to-main-button" onClick={returnToMain} >Return to Main Page</button>
     </div>

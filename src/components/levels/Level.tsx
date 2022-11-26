@@ -6,10 +6,7 @@ import uniqid from 'uniqid';
 import { initializeApp } from "firebase/app";
 import { getFirestore,
   doc,
-  collection,
   getDoc,
-  getDocs,
-  query,
   Firestore,
 } from 'firebase/firestore';
 import { foundCharactersState } from '../../types/interfaces';
@@ -38,10 +35,32 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     list: [],
   });
 
-  const [level, setLevel] = useState({
-    finished: false,
-    time: 0,
+  const [gameOver, setGameOver] = useState({
+    status: false,
+    time: '',
   });
+
+  const [secondsTimer, setSecondsTimer] = useState(0);
+  const [minutesTimer, setMinutesTimer] = useState(0);
+
+  useEffect(() => {
+    const stopWatchSecond = setInterval(() => {
+      setSecondsTimer((secondsTimer) => (secondsTimer === 59 ? 0 : secondsTimer + 1));
+    }, 1000);
+
+    const stopWatchMinute = setInterval(() => {
+      setMinutesTimer((minutesTimer) => (minutesTimer === 59 ? 0 : minutesTimer + 1));
+    }, 60000);
+    
+    return () => {
+      clearInterval(stopWatchSecond);
+      clearInterval(stopWatchMinute);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(`${minutesTimer}:${secondsTimer}`);
+  }, [secondsTimer, minutesTimer]);
 
   const fetchCharacters = (): string[] => {
     // converts level data into a readable character list
@@ -191,9 +210,9 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
       characterY: 0,
     });
     if (characterList.length === charactersFound.list.length + 1) {
-      setLevel({
-        finished: true,
-        time: 0,
+      setGameOver({
+        status: true,
+        time: `${minutesTimer}:${secondsTimer}`,
       });
     };
   };
@@ -225,9 +244,9 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     }, 2000);
   };
 
-  if (level.finished === true) {
+  if (gameOver.status === true) {
     return (
-      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} />
+      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} gameOver={gameOver.time} />
     );
   };
 

@@ -42,12 +42,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15vw;
+  width: 20vw;
   height: 4vh;
   margin-top: 1%;
   background-color: rgb(235, 38, 32);
   color: white;
-  font-size: 1em;
+  font-size: 0.75em;
 }
 
 .character-selection-response {

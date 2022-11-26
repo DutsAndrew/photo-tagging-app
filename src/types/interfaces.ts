@@ -26,6 +26,7 @@ interface foundCharactersState {
 interface AddNameProps {
   levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; },
   returnToMain: MouseEventHandler<HTMLButtonElement>,
+  gameOver: string,
 };
 
 interface NameFormProps {
