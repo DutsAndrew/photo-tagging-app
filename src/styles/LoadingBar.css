@@ -1,0 +1,29 @@
+.waldo-loading-img {
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 10%;
+  display: flex;
+}
+
+.rotate {
+  animation: rotation 2s;
+}
+
+.linear {
+  animation-timing-function: linear;
+}
+
+.infinite {
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

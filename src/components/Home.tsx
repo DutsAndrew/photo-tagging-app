@@ -8,6 +8,7 @@ import { getFirestore,
   doc,
   getDoc,
 } from 'firebase/firestore';
+import LoadingBar from "./LoadingBar";
 
 const MainPage = (): JSX.Element => {
 
@@ -57,39 +58,42 @@ const MainPage = (): JSX.Element => {
       for (let i = 1; i < totalLevels + 1; i++) {
         const leaderboardsRef = doc(db, 'leaderboards', i.toString());
         const leaderboardSnap = await getDoc(leaderboardsRef);
-        const leaderboardData = leaderboardSnap.data();
+        const leaderboardData: any = leaderboardSnap.data();
 
-        // function to sort leaderboard in order of who was the fastest
+        const convertedArray: any = Object.entries(leaderboardData);
+        const sortedData = convertedArray.sort(function(a: any, b: any) { 
+          return a[1][1] - b[1][1]
+        });
         
         switch (i) {
           case 1:
             setLevel1Leaderboards({
-              leaderboardData,
+              sortedData,
             });
             continue;
           case 2:
             setLevel2Leaderboards({
-              leaderboardData,
+              sortedData,
           });
           continue;
           case 3:
             setLevel3Leaderboards({
-              leaderboardData,
+              sortedData,
             });
             continue;
           case 4:
             setLevel4Leaderboards({
-              leaderboardData,
+              sortedData,
           });
           continue;
           case 5:
             setLevel5Leaderboards({
-              leaderboardData,
+              sortedData,
             });
             continue;
           case 6:
             setLevel6Leaderboards({
-              leaderboardData,
+              sortedData,
             });
             setDbQuery({
               status: true,
@@ -124,15 +128,14 @@ const MainPage = (): JSX.Element => {
         return <p>Error, please try again</p>
     };
   };
-
+  
   // console.log(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
   const currentPage: JSX.Element = pageRenderer(currentLevel.level);
   if (dbQuery.status === true) {
     return currentPage;
   } else {
     return (
-      // build loading page
-      <p>Loading!</p>
+      <LoadingBar />
     )
   }
 };
