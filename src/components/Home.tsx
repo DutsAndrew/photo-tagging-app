@@ -3,12 +3,29 @@ import LevelsSnapshot from "./levels/LevelsSnapshot";
 import Leaderboard from './Leaderboard/Leaderboard';
 import Level from './levels/Level';
 import { levelData } from '../data/levelData';
+import { initializeApp } from "firebase/app";
+import { getFirestore,
+  doc,
+  getDoc,
+} from 'firebase/firestore';
 
 const MainPage = (): JSX.Element => {
 
   const [currentLevel, setCurrentLevel] = useState({
     level: 0,
   });
+
+  const [dbQuery, setDbQuery] = useState({
+    status: false,
+  });
+
+  const [level1Leaderboards, setLevel1Leaderboards] = useState({});
+  const [level2Leaderboards, setLevel2Leaderboards] = useState({});
+  const [level3Leaderboards, setLevel3Leaderboards] = useState({});
+  const [level4Leaderboards, setLevel4Leaderboards] = useState({});
+  const [level5Leaderboards, setLevel5Leaderboards] = useState({});
+  const [level6Leaderboards, setLevel6Leaderboards] = useState({});
+
 
   const handleLevelSelection = (levelNumber: number): void => {
     setCurrentLevel({
@@ -21,6 +38,69 @@ const MainPage = (): JSX.Element => {
       level: 0,
     });
   };
+
+  useEffect(() => {
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyD34yDJ04Py9lOKIJOm8G8m83nhzSiaqiA",
+      authDomain: "photo-tagging-app-f39ec.firebaseapp.com",
+      projectId: "photo-tagging-app-f39ec",
+      storageBucket: "photo-tagging-app-f39ec.appspot.com",
+      messagingSenderId: "722301117573",
+      appId: "1:722301117573:web:44652e9fdd2675a00cb5ec"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const totalLevels = 6;
+
+    (async function fetchLevelLeaderboard() {
+      for (let i = 1; i < totalLevels + 1; i++) {
+        const leaderboardsRef = doc(db, 'leaderboards', i.toString());
+        const leaderboardSnap = await getDoc(leaderboardsRef);
+        const leaderboardData = leaderboardSnap.data();
+
+        // function to sort leaderboard in order of who was the fastest
+        
+        switch (i) {
+          case 1:
+            setLevel1Leaderboards({
+              leaderboardData,
+            });
+            continue;
+          case 2:
+            setLevel2Leaderboards({
+              leaderboardData,
+          });
+          continue;
+          case 3:
+            setLevel3Leaderboards({
+              leaderboardData,
+            });
+            continue;
+          case 4:
+            setLevel4Leaderboards({
+              leaderboardData,
+          });
+          continue;
+          case 5:
+            setLevel5Leaderboards({
+              leaderboardData,
+            });
+            continue;
+          case 6:
+            setLevel6Leaderboards({
+              leaderboardData,
+            });
+            setDbQuery({
+              status: true,
+            });
+            continue;
+          default: 
+            return null;
+        };
+      };
+    })();
+  }, []);
 
   function pageRenderer(level: number): JSX.Element {
     switch(level) {
@@ -45,8 +125,16 @@ const MainPage = (): JSX.Element => {
     };
   };
 
+  // console.log(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
   const currentPage: JSX.Element = pageRenderer(currentLevel.level);
-  return currentPage;
+  if (dbQuery.status === true) {
+    return currentPage;
+  } else {
+    return (
+      // build loading page
+      <p>Loading!</p>
+    )
+  }
 };
 
 export default MainPage;

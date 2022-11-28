@@ -58,10 +58,6 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(`${minutesTimer}:${secondsTimer}`);
-  }, [secondsTimer, minutesTimer]);
-
   const fetchCharacters = (): string[] => {
     // converts level data into a readable character list
     const characterList: string[] = [];
