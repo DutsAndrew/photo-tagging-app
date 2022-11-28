@@ -11,7 +11,7 @@ import uniqid from 'uniqid';
 
 const LevelsSnapshot: FC<LevelsSnapshotProps> = (props): JSX.Element => {
 
-  const { handleLevelSelection } = props;
+  const { handleLevelSelection, leaderboards } = props;
 
   const sendLevelInformation = (levelNumber: number): void => {
     handleLevelSelection(levelNumber);
@@ -24,37 +24,37 @@ const LevelsSnapshot: FC<LevelsSnapshotProps> = (props): JSX.Element => {
   const levelSnapshots = [
     {
       name: 'Level 1: Beach',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[0].sortedData[0][1][0]} ${leaderboards[0].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: beachLevel,
       level: 1,
     },
     {
       name: 'Level 2: Ski Mountain',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[1].sortedData[0][1][0]} ${leaderboards[1].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: coldMountainLevel,
       level: 2,
     },
     {
       name: 'Level 3: Feast',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[2].sortedData[0][1][0]} ${leaderboards[2].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: feastLevel,
       level: 3,
     },
     {
       name: 'Level 4: Market',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[3].sortedData[0][1][0]} ${leaderboards[3].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: marketLevel,
       level: 4,
     },
     {
       name: 'Level 5: GoldShire',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[4].sortedData[0][1][0]} ${leaderboards[4].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: medievalLevel,
       level: 5,
     },
     {
       name: 'level 6: Siege',
-      bestScore: 'No Best Score',
+      bestScore: `Best: ${leaderboards[5].sortedData[0][1][0]} ${leaderboards[5].sortedData[0][1][1].toString().replace('.', ':')}`,
       mapSrc: siegeLevel,
       level: 6,
     },

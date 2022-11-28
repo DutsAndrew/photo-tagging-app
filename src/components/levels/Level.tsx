@@ -14,7 +14,7 @@ import AddNameToLeaderboard from '../Leaderboard/AddNameToLeaderboard';
 
 const Level: FC<LevelProps> = (props): JSX.Element => {
 
-  const { returnToMain, levelData } = props;
+  const { returnToMain, levelData, leaderboard } = props;
 
   const [dropDownMenu, setDropDownMenu] = useState({
     status: false,

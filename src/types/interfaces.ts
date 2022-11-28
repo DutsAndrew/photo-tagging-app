@@ -2,11 +2,13 @@ import { MouseEventHandler, FormEventHandler } from 'react';
 
 interface LevelsSnapshotProps {
   handleLevelSelection: Function,
+  leaderboards: any,
 };
 
 interface LevelProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
   levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; }
+  leaderboard: {},
 };
 
 interface LeaderboardProps {

@@ -95,6 +95,7 @@ const MainPage = (): JSX.Element => {
             setLevel6Leaderboards({
               sortedData,
             });
+            // must remain in last db query for levels in game
             setDbQuery({
               status: true,
             });
@@ -109,26 +110,28 @@ const MainPage = (): JSX.Element => {
   function pageRenderer(level: number): JSX.Element {
     switch(level) {
       case 0:
-        return <LevelsSnapshot handleLevelSelection={handleLevelSelection} />
+        const leaderboardArray = [];
+        leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
+        return <LevelsSnapshot handleLevelSelection={handleLevelSelection} leaderboards={leaderboardArray} />
       case 1:
-        return <Level returnToMain={returnToMain} levelData={levelData[0]} />;
+        return <Level returnToMain={returnToMain} levelData={levelData[0]} leaderboard={level1Leaderboards} />;
       case 2:
-        return <Level returnToMain={returnToMain} levelData={levelData[1]} />
+        return <Level returnToMain={returnToMain} levelData={levelData[1]} leaderboard={level2Leaderboards} />
       case 3:
-        return <Level returnToMain={returnToMain} levelData={levelData[2]} />
+        return <Level returnToMain={returnToMain} levelData={levelData[2]} leaderboard={level3Leaderboards} />
       case 4:
-        return <Level returnToMain={returnToMain} levelData={levelData[3]} />
+        return <Level returnToMain={returnToMain} levelData={levelData[3]} leaderboard={level4Leaderboards} />
       case 5:
-        return <Level returnToMain={returnToMain} levelData={levelData[4]} />
+        return <Level returnToMain={returnToMain} levelData={levelData[4]} leaderboard={level5Leaderboards} />
       case 6:
-        return <Level returnToMain={returnToMain} levelData={levelData[5]} />
+        return <Level returnToMain={returnToMain} levelData={levelData[5]} leaderboard={level6Leaderboards} />
       case 7:
         return <Leaderboard returnToMain={returnToMain} />
       default:
         return <p>Error, please try again</p>
     };
   };
-  
+
   // console.log(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
   const currentPage: JSX.Element = pageRenderer(currentLevel.level);
   if (dbQuery.status === true) {
