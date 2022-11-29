@@ -18,6 +18,13 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
     status: false,
   })
 
+  // add floating 0, if timer stopped with seconds below 10
+  let levelTime = gameOver;
+  if (gameOver.split(':')[1].length === 1) {
+    const addFloatingZero = `${gameOver.split(':')[0]}` + ':0' + `${gameOver.split(':')[1]}`;
+    levelTime = addFloatingZero;
+  };
+
   const saveNameToDb = async (e: any): Promise<void> => {
     e.preventDefault();
 
@@ -36,8 +43,12 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
     const nameValue: string = (document.querySelector('#name-input') as HTMLInputElement).value;
     const nameRef = doc(db, 'leaderboards', levelData.level.toString());
     const idRef: string = uniqid();
+
+    // convert 0:00 time to 0.00 value for db storage
+    const convertedTime = Number(levelTime.replace(':', '.'));
+
     await setDoc(nameRef, {
-      [idRef]: [nameValue, 0.12]
+      [idRef]: [nameValue, convertedTime]
     }, { merge: true});
     setNameSaved({
       status: true,
@@ -54,7 +65,7 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
   return (
     <div className="add-name-to-leaderboard-container">
       <p className="level-win-text" >You beat {levelData.name}!</p>
-      <p className="level-win-text">Your time was: {gameOver}</p>
+      <p className="level-win-text">Your time was: {levelTime}</p>
       <NameForm saveNameToDb={saveNameToDb} />
       <button className="return-to-main-button" onClick={returnToMain} >Return to Main Page</button>
     </div>
