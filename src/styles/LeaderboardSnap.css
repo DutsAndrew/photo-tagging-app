@@ -32,10 +32,15 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  padding-left: 3%;
   flex: auto;
-  margin-left: 2%;
   width: 100vw;
   height: 10vh;
+}
+
+.level-leaderboard-snaps:hover {
+  background-color: white;
+  color: rgb(235, 38, 32, 1);
 }
 
 .level-leaderboard-header {
@@ -48,7 +53,7 @@
 }
 
 .level-high-scores {
-
+  font-size: 1em;
 }
 
 .view-all-leaderboards-button {
