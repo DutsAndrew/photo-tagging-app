@@ -13,6 +13,8 @@ interface LevelProps {
 
 interface LeaderboardProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
+  currentLevel: {},
+  leaderboard: any,
 };
 
 interface DropDownMenuProps {
@@ -29,10 +31,16 @@ interface AddNameProps {
   levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; },
   returnToMain: MouseEventHandler<HTMLButtonElement>,
   gameOver: string,
+  leaderboard: {},
 };
 
 interface NameFormProps {
   saveNameToDb: FormEventHandler<HTMLFormElement>,
+};
+
+interface LeaderboardSnapProps {
+  returnToMain: MouseEventHandler<HTMLButtonElement>,
+  leaderboard: any,
 };
 
 export type {
@@ -43,4 +51,5 @@ export type {
   foundCharactersState,
   AddNameProps,
   NameFormProps,
+  LeaderboardSnapProps,
 };

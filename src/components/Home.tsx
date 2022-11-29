@@ -108,10 +108,11 @@ const MainPage = (): JSX.Element => {
   }, []);
 
   function pageRenderer(level: number): JSX.Element {
+    const leaderboardArray = [];
+    leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
+    
     switch(level) {
       case 0:
-        const leaderboardArray = [];
-        leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
         return <LevelsSnapshot handleLevelSelection={handleLevelSelection} leaderboards={leaderboardArray} />
       case 1:
         return <Level returnToMain={returnToMain} levelData={levelData[0]} leaderboard={level1Leaderboards} />;
@@ -126,7 +127,7 @@ const MainPage = (): JSX.Element => {
       case 6:
         return <Level returnToMain={returnToMain} levelData={levelData[5]} leaderboard={level6Leaderboards} />
       case 7:
-        return <Leaderboard returnToMain={returnToMain} />
+        return <Leaderboard returnToMain={returnToMain} currentLevel={0} leaderboard={leaderboardArray} />
       default:
         return <p>Error, please try again</p>
     };

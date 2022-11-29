@@ -1,0 +1,69 @@
+.leaderboard-snap-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderboard-header-text {
+  font-size: 3em;
+  color: rgb(235, 38, 32, 1);
+  margin: 0;
+  margin-left: 5%;
+  display: flex;
+  width: 100vw;
+  height: auto;
+}
+
+.level-leaderboard-snaps-container {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0;
+  margin-top: 2%;
+  background-color: rgb(235, 38, 32, 0.95);
+  color: white;
+  width: 100vw;
+  height: auto;
+}
+
+.level-leaderboard-snaps {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  flex: auto;
+  margin-left: 2%;
+  width: 100vw;
+  height: 10vh;
+}
+
+.level-leaderboard-header {
+  font-size: 2em;
+}
+
+.level-data-container {
+  font-size: 1em;
+  list-style: none;
+}
+
+.level-high-scores {
+
+}
+
+.view-all-leaderboards-button {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 0.75em;
+  background-color: white;
+  color: rgb(235, 38, 32, 1);
+  border: none;
+  width: 15vw;
+  height: 2.5vh;
+}
+
+.view-all-leaderboards-button:hover {
+  background-color: rgb(235, 38, 32, 1);
+  color: white;
+  cursor: pointer;
+}

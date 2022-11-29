@@ -242,7 +242,7 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
 
   if (gameOver.status === true) {
     return (
-      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} gameOver={gameOver.time} />
+      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} gameOver={gameOver.time} leaderboard={leaderboard} />
     );
   };
 

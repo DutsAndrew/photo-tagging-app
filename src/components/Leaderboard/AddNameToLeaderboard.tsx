@@ -12,7 +12,7 @@ import Leaderboard from "./Leaderboard";
 
 const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
 
-  const { levelData, returnToMain, gameOver } = props;
+  const { levelData, returnToMain, gameOver, leaderboard } = props;
 
   const [nameSaved, setNameSaved] = useState({
     status: false,
@@ -56,9 +56,10 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
   };
 
   if (nameSaved.status === true) {
+    const currentLevel = levelData.level;
     return (
       // set this up to return the current level's leaderboard
-      <Leaderboard returnToMain={returnToMain} />
+      <Leaderboard returnToMain={returnToMain} currentLevel={currentLevel} leaderboard={leaderboard} />
     );
   };
 
