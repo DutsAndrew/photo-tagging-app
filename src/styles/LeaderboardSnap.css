@@ -3,6 +3,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  height: 90vh;
 }
 
 .leaderboard-header-text {
@@ -10,9 +11,10 @@
   color: rgb(235, 38, 32, 1);
   margin: 0;
   margin-left: 5%;
+  margin-bottom: 2%;
   display: flex;
   width: 100vw;
-  height: auto;
+  height: 5vh;
 }
 
 .level-leaderboard-snaps-container {
@@ -23,7 +25,7 @@
   background-color: rgb(235, 38, 32, 0.95);
   color: white;
   width: 100vw;
-  height: auto;
+  height: 70vh;
 }
 
 .level-leaderboard-snaps {

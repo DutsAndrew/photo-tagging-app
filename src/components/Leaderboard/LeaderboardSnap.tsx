@@ -8,13 +8,13 @@ const LeaderboardSnap: FC<LeaderboardSnapProps> = (props): JSX.Element => {
 
   const { returnToMain, leaderboard } = props;
 
-  const [viewAllSwitch, setViewAllSwitch] = useState({
+  const [viewHighScores, setViewHighScores] = useState({
     switchOn: false,
     level: 0,
   });
 
   const returnToLeaderboard = () => {
-    setViewAllSwitch({
+    setViewHighScores({
       switchOn: false,
       level: 0,
     });
@@ -23,7 +23,7 @@ const LeaderboardSnap: FC<LeaderboardSnapProps> = (props): JSX.Element => {
   const handleViewAllClick = (e: React.MouseEvent): void => {
     const target = e.target as HTMLInputElement
     const levelNumber = Number(target.parentElement?.id);
-    setViewAllSwitch({
+    setViewHighScores({
       switchOn: true,
       level: levelNumber,
     });
@@ -50,7 +50,7 @@ const LeaderboardSnap: FC<LeaderboardSnapProps> = (props): JSX.Element => {
   const convertedArray: any[] = Object.entries(leaderboard);
   let levelStart = 0;
 
-  if (viewAllSwitch.switchOn === false) {
+  if (viewHighScores.switchOn === false) {
     return (
       <div className="leaderboard-snap-container">
         <p className="leaderboard-header-text">Leaderboards:</p>
@@ -73,7 +73,7 @@ const LeaderboardSnap: FC<LeaderboardSnapProps> = (props): JSX.Element => {
     );
   };
 
-  const page: JSX.Element | undefined = renderLevelLeaderboard(viewAllSwitch.level);
+  const page: JSX.Element | undefined = renderLevelLeaderboard(viewHighScores.level);
   if (page) {
     return page;
   }

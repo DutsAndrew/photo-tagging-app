@@ -14,7 +14,7 @@ import AddNameToLeaderboard from '../Leaderboard/AddNameToLeaderboard';
 
 const Level: FC<LevelProps> = (props): JSX.Element => {
 
-  const { returnToMain, levelData, leaderboard } = props;
+  const { returnToMain, levelData, leaderboard, sendUserToLeaderboard } = props;
 
   const [dropDownMenu, setDropDownMenu] = useState({
     status: false,
@@ -242,7 +242,7 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
 
   if (gameOver.status === true) {
     return (
-      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} gameOver={gameOver.time} leaderboard={leaderboard} />
+      <AddNameToLeaderboard levelData={levelData} returnToMain={returnToMain} gameOver={gameOver.time} leaderboard={leaderboard} sendUserToLeaderboard={sendUserToLeaderboard} />
     );
   };
 

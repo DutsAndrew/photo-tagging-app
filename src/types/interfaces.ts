@@ -9,6 +9,7 @@ interface LevelProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
   levelData: { name: string; characters: { name: string; img: string; }[]; mapSrc: string; level: number; bestScore: string; }
   leaderboard: {},
+  sendUserToLeaderboard: Function,
 };
 
 interface LeaderboardProps {
@@ -31,6 +32,7 @@ interface AddNameProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
   gameOver: string,
   leaderboard: {},
+  sendUserToLeaderboard: Function,
 };
 
 interface NameFormProps {

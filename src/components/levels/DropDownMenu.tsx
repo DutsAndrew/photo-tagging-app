@@ -43,7 +43,7 @@ const DropDownMenu: FC<DropDownMenuProps> = (props): JSX.Element => {
   const yLocation = dropDownMenu.mouseY;
 
   return (
-    <DropDownForm style={{left: `${xLocation}px`, top: `${yLocation}px`}} >
+    <DropDownForm className="drop-down-form" style={{left: `${xLocation}px`, top: `${yLocation}px`}} >
         <CharacterList>
           {Array.isArray(characterList) && characterList.map((character) => {
             if (!charactersFound.includes(character)) {

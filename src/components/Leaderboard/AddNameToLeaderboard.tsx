@@ -8,11 +8,10 @@ import { getFirestore,
   setDoc,
 } from 'firebase/firestore';
 import uniqid from 'uniqid';
-import LeaderboardSnap from "./LeaderboardSnap";
 
 const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
 
-  const { levelData, returnToMain, gameOver, leaderboard } = props;
+  const { levelData, returnToMain, gameOver, leaderboard, sendUserToLeaderboard } = props;
 
   const [nameSaved, setNameSaved] = useState({
     status: false,
@@ -53,13 +52,7 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
     setNameSaved({
       status: true,
     });
-  };
-
-  if (nameSaved.status === true) {
-    return (
-      // set this up to return the current level's leaderboard
-      <LeaderboardSnap returnToMain={returnToMain} leaderboard={leaderboard} />
-    );
+    sendUserToLeaderboard(levelData.level);
   };
 
   return (

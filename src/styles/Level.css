@@ -1,3 +1,65 @@
+@media (max-width: 500px) {
+  .map-container {
+    width: 100vw;
+    height: 30vh;
+  }
+  .drop-down-form {
+    width: 10vw;
+    height: 10vh;
+    font-size: 0.5em;
+  }
+  .level-info-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(235, 38, 3, 0.9);
+    width: 85vw;
+    height: 5vh;
+    margin-bottom: 2%;
+    font-size: 1em;
+  }
+  .level-objectives-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 35vw;
+  }
+  .current-level-text, .level-objective-text {
+    color: white;
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 501px) {
+  .map-container {
+    width: 100vw;
+    height: 70vh;
+  }
+  .level-info-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(235, 38, 3, 0.9);
+    width: 75vw;
+    height: 5vh;
+    margin-bottom: 2%;
+  }
+  .level-objectives-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 20vw;
+  }
+  .current-level-text, .level-objective-text {
+    color: white;
+    font-size: 1.5em;
+  }
+}
+
 .level-container {
   display: flex;
   flex-flow: column nowrap;
@@ -7,35 +69,6 @@
   margin-top: 2%;
   width: 100vw;
   height: 90vh;
-}
-
-.level-info-container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  background-color: rgb(235, 38, 3, 0.9);
-  width: 75vw;
-  height: 5vh;
-  margin-bottom: 2%;
-}
-
-.current-level-text, .level-objective-text {
-  color: white;
-  font-size: 1.5em;
-}
-
-.level-objectives-container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 20vw;
-}
-
-.map-container {
-  width: 100vw;
-  height: 70vh;
 }
 
 .return-to-main-button {

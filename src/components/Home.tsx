@@ -12,6 +12,18 @@ import LeaderboardSnap from "./Leaderboard/LeaderboardSnap";
 
 const MainPage = (): JSX.Element => {
 
+   // Initialize Firebase
+   const firebaseConfig = {
+    apiKey: "AIzaSyD34yDJ04Py9lOKIJOm8G8m83nhzSiaqiA",
+    authDomain: "photo-tagging-app-f39ec.firebaseapp.com",
+    projectId: "photo-tagging-app-f39ec",
+    storageBucket: "photo-tagging-app-f39ec.appspot.com",
+    messagingSenderId: "722301117573",
+    appId: "1:722301117573:web:44652e9fdd2675a00cb5ec"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
   const [currentLevel, setCurrentLevel] = useState({
     level: 0,
   });
@@ -40,18 +52,65 @@ const MainPage = (): JSX.Element => {
     });
   };
 
+  const sendUserToLeaderboard = (level: number): void => {
+    refreshLeaderboardForUserEntry(level);
+    setCurrentLevel({
+      level: 7,
+    });
+  };
+
+  const refreshLeaderboardForUserEntry = (level: number): void => {
+
+    (async function fetchLevelLeaderboard() {
+        const leaderboardsRef = doc(db, 'leaderboards', level.toString());
+        const leaderboardSnap = await getDoc(leaderboardsRef);
+        const leaderboardData: any = leaderboardSnap.data();
+
+        const convertedArray: any = Object.entries(leaderboardData);
+        const sortedData: any[] = convertedArray.sort(function(a: any, b: any) { 
+          return a[1][1] - b[1][1]
+        });
+
+        switch (level) {
+          case 1:
+            setLevel1Leaderboards({
+              sortedData,
+            });
+            break;
+          case 2:
+            setLevel2Leaderboards({
+              sortedData,
+            });
+            break;
+          case 3:
+            setLevel3Leaderboards({
+              sortedData,
+            });
+            break;
+          case 4:
+            setLevel4Leaderboards({
+              sortedData,
+            });
+            break;
+          case 5:
+            setLevel5Leaderboards({
+              sortedData,
+            });
+            break;
+          case 6:
+            setLevel6Leaderboards({
+              sortedData,
+            });
+            break;
+          default:
+            return null;
+        };
+    })();
+  };
+
   useEffect(() => {
-    // Initialize Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyD34yDJ04Py9lOKIJOm8G8m83nhzSiaqiA",
-      authDomain: "photo-tagging-app-f39ec.firebaseapp.com",
-      projectId: "photo-tagging-app-f39ec",
-      storageBucket: "photo-tagging-app-f39ec.appspot.com",
-      messagingSenderId: "722301117573",
-      appId: "1:722301117573:web:44652e9fdd2675a00cb5ec"
-    };
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+
+    // update with level # change
     const totalLevels = 6;
 
     (async function fetchLevelLeaderboard() {
@@ -114,17 +173,17 @@ const MainPage = (): JSX.Element => {
         leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
         return <LevelsSnapshot handleLevelSelection={handleLevelSelection} leaderboards={leaderboardArray} />
       case 1:
-        return <Level returnToMain={returnToMain} levelData={levelData[0]} leaderboard={level1Leaderboards} />;
+        return <Level returnToMain={returnToMain} levelData={levelData[0]} leaderboard={level1Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />;
       case 2:
-        return <Level returnToMain={returnToMain} levelData={levelData[1]} leaderboard={level2Leaderboards} />
+        return <Level returnToMain={returnToMain} levelData={levelData[1]} leaderboard={level2Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />
       case 3:
-        return <Level returnToMain={returnToMain} levelData={levelData[2]} leaderboard={level3Leaderboards} />
+        return <Level returnToMain={returnToMain} levelData={levelData[2]} leaderboard={level3Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />
       case 4:
-        return <Level returnToMain={returnToMain} levelData={levelData[3]} leaderboard={level4Leaderboards} />
+        return <Level returnToMain={returnToMain} levelData={levelData[3]} leaderboard={level4Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />
       case 5:
-        return <Level returnToMain={returnToMain} levelData={levelData[4]} leaderboard={level5Leaderboards} />
+        return <Level returnToMain={returnToMain} levelData={levelData[4]} leaderboard={level5Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />
       case 6:
-        return <Level returnToMain={returnToMain} levelData={levelData[5]} leaderboard={level6Leaderboards} />
+        return <Level returnToMain={returnToMain} levelData={levelData[5]} leaderboard={level6Leaderboards} sendUserToLeaderboard={sendUserToLeaderboard} />
       case 7:
         leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
         return <LeaderboardSnap returnToMain={returnToMain} leaderboard={leaderboardArray} />
