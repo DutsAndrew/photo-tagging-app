@@ -8,7 +8,7 @@ import { getFirestore,
   setDoc,
 } from 'firebase/firestore';
 import uniqid from 'uniqid';
-import Leaderboard from "./Leaderboard";
+import LeaderboardSnap from "./LeaderboardSnap";
 
 const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
 
@@ -56,10 +56,9 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
   };
 
   if (nameSaved.status === true) {
-    const currentLevel = levelData.level;
     return (
       // set this up to return the current level's leaderboard
-      <Leaderboard returnToMain={returnToMain} currentLevel={currentLevel} leaderboard={leaderboard} />
+      <LeaderboardSnap returnToMain={returnToMain} leaderboard={leaderboard} />
     );
   };
 

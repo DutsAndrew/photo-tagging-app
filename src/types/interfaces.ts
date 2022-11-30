@@ -13,7 +13,6 @@ interface LevelProps {
 
 interface LeaderboardProps {
   returnToMain: MouseEventHandler<HTMLButtonElement>,
-  currentLevel: {},
   leaderboard: any,
 };
 
@@ -43,6 +42,12 @@ interface LeaderboardSnapProps {
   leaderboard: any,
 };
 
+interface HighScoreListProps {
+  highScores: any,
+  level: number,
+  returnToLeaderboard: () => void,
+};
+
 export type {
   LevelsSnapshotProps,
   LevelProps,
@@ -52,4 +57,5 @@ export type {
   AddNameProps,
   NameFormProps,
   LeaderboardSnapProps,
+  HighScoreListProps,
 };

@@ -1,0 +1,29 @@
+.high-score-master {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: rgb(235, 38, 32);
+  width: 90vw;
+  height: auto;
+}
+
+.high-score-header {
+  font-size: 1.5em;
+}
+
+.high-scores-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25em;
+  width: 90vw;
+  height: auto;
+  gap: 2.5vh;
+}
+
+.high-score-item {
+
+}

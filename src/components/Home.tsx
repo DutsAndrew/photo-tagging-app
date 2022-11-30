@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LevelsSnapshot from "./levels/LevelsSnapshot";
-import Leaderboard from './Leaderboard/Leaderboard';
 import Level from './levels/Level';
 import { levelData } from '../data/levelData';
 import { initializeApp } from "firebase/app";
@@ -9,6 +8,7 @@ import { getFirestore,
   getDoc,
 } from 'firebase/firestore';
 import LoadingBar from "./LoadingBar";
+import LeaderboardSnap from "./Leaderboard/LeaderboardSnap";
 
 const MainPage = (): JSX.Element => {
 
@@ -34,7 +34,7 @@ const MainPage = (): JSX.Element => {
     });
   };
 
-  const returnToMain = () => {
+  const returnToMain = (): void => {
     setCurrentLevel({
       level: 0,
     });
@@ -108,11 +108,10 @@ const MainPage = (): JSX.Element => {
   }, []);
 
   function pageRenderer(level: number): JSX.Element {
-    const leaderboardArray = [];
-    leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
-    
+    const leaderboardArray: any[] = [];
     switch(level) {
       case 0:
+        leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
         return <LevelsSnapshot handleLevelSelection={handleLevelSelection} leaderboards={leaderboardArray} />
       case 1:
         return <Level returnToMain={returnToMain} levelData={levelData[0]} leaderboard={level1Leaderboards} />;
@@ -127,13 +126,13 @@ const MainPage = (): JSX.Element => {
       case 6:
         return <Level returnToMain={returnToMain} levelData={levelData[5]} leaderboard={level6Leaderboards} />
       case 7:
-        return <Leaderboard returnToMain={returnToMain} currentLevel={0} leaderboard={leaderboardArray} />
+        leaderboardArray.push(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
+        return <LeaderboardSnap returnToMain={returnToMain} leaderboard={leaderboardArray} />
       default:
         return <p>Error, please try again</p>
     };
   };
 
-  // console.log(level1Leaderboards, level2Leaderboards, level3Leaderboards, level4Leaderboards, level5Leaderboards, level6Leaderboards);
   const currentPage: JSX.Element = pageRenderer(currentLevel.level);
   if (dbQuery.status === true) {
     return currentPage;
