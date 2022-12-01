@@ -1,4 +1,22 @@
 @media (max-width: 600px) {
+  .leaderboard-snap-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+  }
+  .leaderboard-header-text {
+    font-size: 2em;
+    color: rgb(235, 38, 32, 1);
+    margin: 0;
+    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 3vh;
+  }
   .view-all-leaderboards-button {
     margin-left: 10%;
     margin-right: 10%;
@@ -9,9 +27,31 @@
     width: 20vw;
     height: 2.5vh;
   }
+  .level-data-container {
+    font-size: 0.9em;
+    list-style: none;
+  }
 }
 
 @media (min-width: 601px) {
+  .leaderboard-snap-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+  }
+  .leaderboard-header-text {
+    font-size: 1.25em;
+    color: rgb(235, 38, 32, 1);
+    margin: 0;
+    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 5vh;
+  }
   .view-all-leaderboards-button {
     margin-left: 10%;
     margin-right: 10%;
@@ -20,27 +60,47 @@
     color: rgb(235, 38, 32, 1);
     border: none;
     width: 15vw;
-    height: 2.5vh;
+    height: 3.5vh;
+  }
+  .level-data-container {
+    font-size: 0.70em;
+    list-style: none;
   }
 }
 
-.leaderboard-snap-container {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-}
-
-.leaderboard-header-text {
-  font-size: 3em;
-  color: rgb(235, 38, 32, 1);
-  margin: 0;
-  margin-left: 5%;
-  margin-bottom: 2%;
-  display: flex;
-  width: 100vw;
-  height: 5vh;
+@media (min-width: 925px) {
+  .leaderboard-snap-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+  }
+  .leaderboard-header-text {
+    font-size: 2em;
+    color: rgb(235, 38, 32, 1);
+    margin: 0;
+    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 3vh;
+  }
+  .view-all-leaderboards-button {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 1em;
+    background-color: white;
+    color: rgb(235, 38, 32, 1);
+    border: none;
+    width: 12vw;
+    height: 4vh;
+  }
+  .level-data-container {
+    font-size: 1.5em;
+    list-style: none;
+  }
 }
 
 .level-leaderboard-snaps-container {
@@ -51,7 +111,7 @@
   background-color: rgb(235, 38, 32, 0.95);
   color: white;
   width: 100vw;
-  height: 70vh;
+  height: 80vh;
 }
 
 .level-leaderboard-snaps {
@@ -63,7 +123,7 @@
   padding-left: 3%;
   flex: auto;
   width: 100vw;
-  height: 10vh;
+  height: 12vh;
 }
 
 .level-leaderboard-snaps:hover {
@@ -72,12 +132,7 @@
 }
 
 .level-leaderboard-header {
-  font-size: 2em;
-}
-
-.level-data-container {
-  font-size: 1em;
-  list-style: none;
+  font-size: 1.75em;
 }
 
 .level-high-scores {

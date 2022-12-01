@@ -255,7 +255,7 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
             <p className="level-objective-text">Find:</p>
             {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
               if (!charactersFound.list.includes(character.name)) {
-                return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+                return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} className="character-imgs"></img>
               }
             })}
           </div>
@@ -281,7 +281,7 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
           <p className="level-objective-text">Find:</p>
           {Array.isArray(levelData.characters) && levelData.characters.map((character) => {
             if (!charactersFound.list.includes(character.name)) {
-              return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} width="30vw" height="30vh"></img>
+              return <img id={character.name} key={uniqid()} src={character.img} alt={character.name} style={{height: '20px', width: '20px'}} ></img>
             }
           })}
         </div>

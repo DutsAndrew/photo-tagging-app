@@ -83,7 +83,60 @@
     justify-content: space-around;
     align-items: center;
     color: white;
-    font-size: 1.25em;
+    font-size: 0.7em;
+  }
+  
+  .level-snap-container:hover {
+    background-color: rgb(235, 38, 32, 0.75);
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  .view-leaderboard-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 5vh;
+    margin-bottom: 2%;
+    background-color: rgb(235, 38, 32);
+    color: white;
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 925px) {
+  .game-levels-preview-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+    overflow: scroll;
+  }
+  
+  .level-snap-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 30vw;
+    height: 30vh;
+    padding: 0.5%;
+    margin: 1%;
+    background-color: rgb(235, 38, 32);
+    transition: all .2s ease-in-out;
+  }
+  
+  .level-snap-info-container {
+    width: 30vw;
+    height: 5vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 1em;
   }
   
   .level-snap-container:hover {
@@ -101,6 +154,6 @@
     margin-bottom: 2%;
     background-color: rgb(235, 38, 32);
     color: white;
-    font-size: 1.25em;
+    font-size: 1em;
   }
 }
