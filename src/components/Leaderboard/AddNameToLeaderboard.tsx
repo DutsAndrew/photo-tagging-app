@@ -13,10 +13,6 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
 
   const { levelData, returnToMain, gameOver, leaderboard, sendUserToLeaderboard } = props;
 
-  const [nameSaved, setNameSaved] = useState({
-    status: false,
-  })
-
   // add floating 0, if timer stopped with seconds below 10
   let levelTime = gameOver;
   if (gameOver.split(':')[1].length === 1) {
@@ -49,9 +45,6 @@ const AddNameToLeaderboard: FC<AddNameProps> = (props): JSX.Element => {
     await setDoc(nameRef, {
       [idRef]: [nameValue, convertedTime]
     }, { merge: true});
-    setNameSaved({
-      status: true,
-    });
     sendUserToLeaderboard(levelData.level);
   };
 

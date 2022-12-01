@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+Photo Tagging App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Find Waldo and his friends in 6 different levels! Upon completion add your name to the Leaderboard! This rendition of <em>"Where's Waldo"</em> is mobile and computer friendly!
 
-## Available Scripts
+Built with:
+* React
+* TypeScript
+* Firebase
+* CSS
+* Styled Components
 
-In the project directory, you can run:
+<strong>Learning Process:</strong>
+1. This app was a quick build and arguably the first one that I felt 100% comfortable completing. I had little to no blockers, was able to integrate a backend for multiple data sources to use on the front end, and was able to make it computer and mobile friendly.
 
-### `npm start`
+2. TypeScript is a lot more solidified than it was. With the heavy amount of props and integration this app required, I saw the true power of TypeScript and it's interfaces/Types when sending props. Every time I was sending data, functions, etc to another component in React I was very aware of what I was sending and what it was thanks to TypeScript. I don't think I'd go back to plain JavaScript if I had a choice after building this project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. I drew out every single component by hand and took notes on what I wanted each thing to do, before I started building this app; I strongly believe I cut out at least 10 hours of coding by doing so. And it will be a practice that I continue moving forward.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. This app took about 2~ weeks start to finish, working about 1-3 hours a day, and taking a day off here and there.
 
-### `npm test`
+<strong>Notes for Improvement:</strong>
+1. Looking back, I would of taken the imgs for the levels, and the data for each level and compiled them into one source on the backend with firebase. I think the front end would've been built a little cleaner had then been done from the get-go.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. I wanted to try out Styled Components in one of the parts of the app, as I heard they are very nice to use in larger applications. I tested it out in a use case that isn't the best for styled components. So, looking back and thinking about future projects I think I'm going to outline what components are going to be re-used and pre-determining what needs to be a Styled Component, so I can utilize that feature more. I do see how it can save a lot of time when building apps.
