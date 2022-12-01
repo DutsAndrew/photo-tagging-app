@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .map-container {
     width: 100vw;
     height: 30vh;
@@ -30,9 +30,20 @@
     color: white;
     font-size: 0.9em;
   }
+  .return-to-main-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 4vh;
+    margin-top: 2%;
+    background-color: rgb(235, 38, 32);
+    color: white;
+    font-size: 0.75em;
+  }
 }
 
-@media (min-width: 501px) {
+@media (min-width: 601px) {
   .map-container {
     width: 100vw;
     height: 70vh;
@@ -58,6 +69,17 @@
     color: white;
     font-size: 1.5em;
   }
+  .return-to-main-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 4vh;
+    margin-top: 2%;
+    background-color: rgb(235, 38, 32);
+    color: white;
+    font-size: 0.75em;
+  }
 }
 
 .level-container {
@@ -69,18 +91,6 @@
   margin-top: 2%;
   width: 100vw;
   height: 90vh;
-}
-
-.return-to-main-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20vw;
-  height: 4vh;
-  margin-top: 1%;
-  background-color: rgb(235, 38, 32);
-  color: white;
-  font-size: 0.75em;
 }
 
 .character-selection-response {

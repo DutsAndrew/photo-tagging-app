@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .add-name-to-leaderboard-container {
     width: 95vw;
     height: 80vh;
@@ -27,7 +27,7 @@
   }
 }
 
-@media (min-width: 501px) {
+@media (min-width: 601px) {
   .add-name-to-leaderboard-container {
     width: 95vw;
     height: 50vh;

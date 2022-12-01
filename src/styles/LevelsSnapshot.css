@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .game-levels-preview-container {
     display: flex;
     flex-flow: column nowrap;
@@ -43,7 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
+    width: 40vw;
     height: 5vh;
     margin-bottom: 5%;
     background-color: rgb(235, 38, 32);
@@ -52,7 +52,7 @@
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 601px) {
   .game-levels-preview-container {
     display: flex;
     flex-flow: row wrap;

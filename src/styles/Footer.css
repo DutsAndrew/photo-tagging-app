@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .footer {
     position: fixed;
     left: 0;
@@ -14,7 +14,7 @@
   }
 }
 
-@media (min-width: 501px) {
+@media (min-width: 601px) {
   .footer {
     position: fixed;
     left: 0;
