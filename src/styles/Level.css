@@ -1,9 +1,4 @@
 @media (max-width: 600px) {
-  .map-container {
-    width: auto;
-    height: auto;
-    margin: auto;
-  }
   .drop-down-form {
     width: 10vw;
     height: 10vh;
@@ -45,10 +40,6 @@
 }
 
 @media (min-width: 601px) {
-  .map-container {
-    width: 100vw;
-    height: auto;
-  }
   .level-info-container {
     display: flex;
     flex-flow: row nowrap;
@@ -96,6 +87,11 @@
     color: white;
     font-size: 1em;
   }
+}
+
+.map-container {
+  width: 100vw;
+  height: auto;
 }
 
 .level-container {
