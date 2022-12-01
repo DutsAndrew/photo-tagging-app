@@ -2,6 +2,8 @@ Photo Tagging App
 
 Find Waldo and his friends in 6 different levels! Upon completion add your name to the Leaderboard! This rendition of <em>"Where's Waldo"</em> is mobile and computer friendly!
 
+![Screen Shot 2022-11-30 at 17 06 39](https://user-images.githubusercontent.com/94728848/204934449-c300e07f-1317-4a9b-b343-c063af8b08da.png)
+
 Built with:
 * React
 * TypeScript
