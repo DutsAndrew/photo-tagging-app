@@ -12,9 +12,9 @@ Built with:
 * Styled Components
 
 <strong>Learning Process:</strong>
-1. This app was a quick build and arguably the first one that I felt 100% comfortable completing. I had little to no blockers, was able to integrate a backend for multiple data sources to use on the front end, and was able to make it computer and mobile friendly.
+1. This app was a quick build and very fun to create. I had little to no blockers, was able to integrate a backend for multiple data sources to use on the front end, and was able to make it computer and mobile friendly.
 
-2. TypeScript is a lot more solidified than it was. With the heavy amount of props and integration this app required, I saw the true power of TypeScript and it's interfaces/Types when sending props. Every time I was sending data, functions, etc to another component in React I was very aware of what I was sending and what it was thanks to TypeScript. I don't think I'd go back to plain JavaScript if I had a choice after building this project.
+2. My use of TypeScript is a lot more solidified than it was. With the heavy amount of props and integration this app required, I saw the true power of TypeScript and it's interfaces/Types when sending props to multiple components. Every time I was sending data, functions, etc to another component in React I was very aware of what I was sending and what it was thanks to TypeScript. I don't think I'd go back to plain JavaScript if I had a choice after building this project.
 
 3. I drew out every single component by hand and took notes on what I wanted each thing to do, before I started building this app; I strongly believe I cut out at least 10 hours of coding by doing so. And it will be a practice that I continue moving forward.
 
