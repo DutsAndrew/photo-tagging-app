@@ -85,10 +85,10 @@ const Level: FC<LevelProps> = (props): JSX.Element => {
   const handleDropDownMenu = (e: MouseEvent): void => {
     const mapImg: HTMLElement | null = document.getElementById('current-level');
     if (mapImg) {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-      const characterX = (e.clientX-mapImg.offsetLeft) / mapImg.offsetWidth * 100;
-      const characterY = (e.clientY-mapImg.offsetTop) / mapImg.offsetHeight * 100;
+      const mouseX = e.pageX;
+      const mouseY = e.pageY;
+      const characterX = (e.pageX-mapImg.offsetLeft) / mapImg.offsetWidth * 100;
+      const characterY = (e.pageY-mapImg.offsetTop) / mapImg.offsetHeight * 100;
       // console.log('X:', characterX, 'Y:', characterY);
       if (dropDownMenu.status === false) {
         setDropDownMenu({
