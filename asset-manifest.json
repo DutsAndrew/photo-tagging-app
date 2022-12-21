@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/photo-tagging-app/static/css/main.cbc2509f.css",
-    "main.js": "/photo-tagging-app/static/js/main.c90ad38c.js",
+    "main.js": "/photo-tagging-app/static/js/main.e7d91419.js",
     "static/media/waldo_medieval_map.jpeg": "/photo-tagging-app/static/media/waldo_medieval_map.0698dce07981dfc4cc93.jpeg",
     "static/media/waldo_feast_map.jpeg": "/photo-tagging-app/static/media/waldo_feast_map.22ac09d74f82da5e1234.jpeg",
     "static/media/waldo_cold_mountain.jpeg": "/photo-tagging-app/static/media/waldo_cold_mountain.9736162ac89c68ce67a0.jpeg",
@@ -12,10 +12,10 @@
     "static/media/odlaw.jpg": "/photo-tagging-app/static/media/odlaw.f34b5260e086e9e07982.jpg",
     "index.html": "/photo-tagging-app/index.html",
     "main.cbc2509f.css.map": "/photo-tagging-app/static/css/main.cbc2509f.css.map",
-    "main.c90ad38c.js.map": "/photo-tagging-app/static/js/main.c90ad38c.js.map"
+    "main.e7d91419.js.map": "/photo-tagging-app/static/js/main.e7d91419.js.map"
   },
   "entrypoints": [
     "static/css/main.cbc2509f.css",
-    "static/js/main.c90ad38c.js"
+    "static/js/main.e7d91419.js"
   ]
 }
