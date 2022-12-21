@@ -12,7 +12,7 @@ const HighScoreList: FC<HighScoreListProps> = (props): JSX.Element => {
         <ol className="high-scores-container">
           {Array.isArray(highScores) && highScores.map((score) => {
             return <li className="high-score-item" key={score[0]}>
-              <strong>{score[1][0]}</strong>, {score[1][1]}
+              <strong>{score[1][0]}</strong>, {score[1][1].toString().replace('.', ':')}
             </li>
           })}
         </ol>
